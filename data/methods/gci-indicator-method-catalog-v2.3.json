@@ -1,0 +1,3123 @@
+{
+  "version": "GCI-IND-v2.3-GEE-B05",
+  "releaseDate": "2026-08-27",
+  "indicatorCount": 85,
+  "publishedBoundaryVersion": "GCI-DUAL-BOUNDARY-V1.3.2-CANDIDATE",
+  "sourceFrameworkBoundaryVersion": "GC100-20260827-V1.0.1",
+  "boundaryVersionNote": {
+    "zh": "指标定义与公式来自 V2.3 框架；网站的城市实体与空间统计边界已经迁移至 V1.3.2 唯一城市双边界主库。旧框架中的 2,311 城市边界字段仅作方法版本追溯，不作为当前网站城市数量。",
+    "en": "Definitions and formulas come from framework V2.3. The website registry and spatial boundary layer have migrated to the V1.3.2 unique-city dual-boundary master. The former 2,311-city boundary field is retained only for method lineage and is not the current website count."
+  },
+  "indicators": [
+    {
+      "id": "GCI-IND-001",
+      "number": 1,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "用地规模",
+        "en": "Land Use Scale"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "建成区面积",
+        "en": "Built-up areas"
+      },
+      "indicatorWeight": 0.22,
+      "finalWeightFormula": "=B2*D2*G2",
+      "dataStatus": 1,
+      "sourceShape": "BUILDING_RASTER",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "SUM",
+      "adminAllocationWeight": "NONE",
+      "formula": "建成区像元面积求和：Σ(A_built_pixel)",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确建成区产品、年份及最小制图单元。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-002",
+      "number": 2,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "用地规模",
+        "en": "Land Use Scale"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "建筑高度",
+        "en": "Building height"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B3*D3*G3",
+      "dataStatus": 1,
+      "sourceShape": "BUILDING_VECTOR",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "FOOTPRINT_WEIGHTED_MEAN",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(H_i×Footprint_i)/Σ(Footprint_i)",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "无建筑覆盖区域不参与高度均值。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-003",
+      "number": 3,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "用地规模",
+        "en": "Land Use Scale"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "建筑密度",
+        "en": "Building density"
+      },
+      "indicatorWeight": 0.2,
+      "finalWeightFormula": "=B4*D4*G4",
+      "dataStatus": 1,
+      "sourceShape": "BUILDING_VECTOR",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(BuildingFootprint_i)/LandArea_boundary",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一陆地面积与水体掩膜。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-004",
+      "number": 4,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "用地规模",
+        "en": "Land Use Scale"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "建筑体积",
+        "en": "Total volume"
+      },
+      "indicatorWeight": 0.2,
+      "finalWeightFormula": "=B5*D5*G5",
+      "dataStatus": 1,
+      "sourceShape": "BUILDING_VECTOR",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "SUM",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(BuildingFootprint_i×Height_i)",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "输出体积单位并记录高度缺失处理。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-005",
+      "number": 5,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "用地规模",
+        "en": "Land Use Scale"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "容积率",
+        "en": "Volume Fraction"
+      },
+      "indicatorWeight": 0.2,
+      "finalWeightFormula": "=B6*D6*G6",
+      "dataStatus": 1,
+      "sourceShape": "BUILDING_VECTOR",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(FloorArea_i)/LandArea_boundary",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "楼层面积估计方法需要统一。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-006",
+      "number": 6,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "夜光强度",
+        "en": "mean nighttime light"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B7*D7*G7",
+      "dataStatus": 1,
+      "sourceShape": "REMOTE_SENSING_RASTER",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(NTL_i×Area_i)/Σ(ValidArea_i)",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一夜光产品、去饱和及背景噪声处理。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-007",
+      "number": 7,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "夜光强度增长率",
+        "en": "Nighttime light growth rate"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B8*D8*G8",
+      "dataStatus": 1,
+      "sourceShape": "REMOTE_SENSING_TIME_SERIES",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "GROWTH_RECALC",
+      "adminAllocationWeight": "NONE",
+      "formula": "(NTL_t1−NTL_t0)/NTL_t0×100%",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "两期必须使用同产品及同物理边界版本。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-008",
+      "number": 8,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "国民生产总值",
+        "en": "Nominal GDP"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B9*D9*G9",
+      "dataStatus": 1,
+      "sourceShape": "GRIDDED_GDP_OR_ADMIN_STAT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM",
+      "adminAllocationWeight": "NTL_EMPLOYMENT",
+      "formula": "物理值=Σ(GDP_grid)；行政值=Σ(GDP_admin×经济权重)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "双边界GDP来源和币价基年必须一致。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-009",
+      "number": 9,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "经济增长率",
+        "en": "GDP Growth Rate"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B10*D10*G10",
+      "dataStatus": 1,
+      "sourceShape": "GDP_TIME_SERIES",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "GROWTH_RECALC",
+      "adminAllocationWeight": "NTL_EMPLOYMENT",
+      "formula": "(GDP_t1−GDP_t0)/GDP_t0×100%（两套边界分别计算）",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "不得混用不同时期边界。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-010",
+      "number": 10,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "人均生产总值",
+        "en": "GDP per Capita"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B11*D11*G11",
+      "dataStatus": 1,
+      "sourceShape": "GDP_AND_POPULATION",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "MATCHED_SUPPORT",
+      "formula": "GDP_boundary/Population_boundary",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "GDP和人口必须来自同一边界、同一年。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-011",
+      "number": 11,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "公司总部数量",
+        "en": "Corporate headquarters"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B12*D12*G12",
+      "dataStatus": 0,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(Headquarter_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "确定集团总部与分支机构的去重规则。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-012",
+      "number": 12,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "股市总价值",
+        "en": "Stock Market Capitalization"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B13*D13*G13",
+      "dataStatus": 0,
+      "sourceShape": "CITY_LEVEL_FINANCIAL_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIRECT_OR_SUM",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "Σ(上市公司市值，按总部城市归属)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "交易所所在地与公司总部所在地口径需二选一。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-013",
+      "number": 13,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "经济规模",
+        "en": "Economic Scale"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "世界500强数量",
+        "en": "World's Top 500 Companies"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B14*D14*G14",
+      "dataStatus": 0,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(Fortune500_HQ_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "采用总部地址并固定榜单年份。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-014",
+      "number": 14,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "人口总量",
+        "en": "Total population, unit: people"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B15*D15*G15",
+      "dataStatus": 1,
+      "sourceShape": "GRIDDED_POPULATION_AND_CENSUS",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "物理值=Σ(Pop_grid)；行政值=Σ(Pop_admin×人口权重)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "栅格人口需与统计人口年份对齐。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-015",
+      "number": 15,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "人口密度",
+        "en": "Mean population density: persons/km"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B16*D16*G16",
+      "dataStatus": 1,
+      "sourceShape": "POPULATION_AND_GEOMETRY",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Population_boundary/LandArea_boundary",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一使用陆地面积，单位 persons/km²。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-016",
+      "number": 16,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "年龄结构指数",
+        "en": "Age profile"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B17*D17*G17",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_DEMOGRAPHIC_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "POP_WEIGHTED_COMPOSITE",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "按年龄组人口汇总后重算年龄结构指数",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "不能直接平均各行政区指数。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-017",
+      "number": 17,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "男女比例",
+        "en": "Male: Female"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B18*D18*G18",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_DEMOGRAPHIC_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(MalePopulation)/Σ(FemalePopulation)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "先汇总分子分母，再计算比值。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-018",
+      "number": 18,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "人口老龄化",
+        "en": "An ageing population: Percentage of >65"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B19*D19*G19",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_DEMOGRAPHIC_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(Population_65plus)/Σ(TotalPopulation)×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "先汇总年龄组人口。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-019",
+      "number": 19,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "人口增长率",
+        "en": "Population growth for 2000-2020"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B20*D20*G20",
+      "dataStatus": 1,
+      "sourceShape": "GRIDDED_POPULATION_TIME_SERIES",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "GROWTH_RECALC",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "(Population_t1−Population_t0)/Population_t0×100%（两套边界分别计算）",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "固定边界回算历史人口。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-020",
+      "number": 20,
+      "primary": {
+        "zh": "城市规模",
+        "en": "Urban Scale"
+      },
+      "primaryWeight": 0.3,
+      "secondary": {
+        "zh": "人口规模",
+        "en": "Population Scale"
+      },
+      "secondaryWeight": 0.2,
+      "name": {
+        "zh": "人口出生率",
+        "en": "Birth rate"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B21*D21*G21",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_VITAL_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(Births)/Σ(MidYearPopulation)×1000",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一为‰并记录统计年度。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-023",
+      "number": 23,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "年均温（Mean temperature (℃)）",
+        "en": "年均温（Mean temperature (℃)）"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B22*D22*G22",
+      "dataStatus": 1,
+      "sourceShape": "CLIMATE_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Temperature_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确年均或多年气候平均期。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-024",
+      "number": 24,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "年降水量（Mean precipitation（mm））",
+        "en": "年降水量（Mean precipitation（mm））"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B23*D23*G23",
+      "dataStatus": 1,
+      "sourceShape": "CLIMATE_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Precipitation_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确累计降水或多年均值。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-025",
+      "number": 25,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "坡度（Mean slope (degree））",
+        "en": "坡度（Mean slope (degree））"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B24*D24*G24",
+      "dataStatus": 1,
+      "sourceShape": "DEM_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Slope_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一DEM和坡度算法。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-026",
+      "number": 26,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "太阳辐射量（Solar radiation (W/m²)）",
+        "en": "太阳辐射量（Solar radiation (W/m²)）"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B25*D25*G25",
+      "dataStatus": 1,
+      "sourceShape": "SOLAR_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(SolarRadiation_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确年均辐射量单位。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-027",
+      "number": 27,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "舒适温度天数",
+        "en": "Days of comfortable temperature"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B26*D26*G26",
+      "dataStatus": 1,
+      "sourceShape": "CLIMATE_TIME_SERIES",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(ComfortableDays_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "舒适温度阈值需在全球统一。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-028",
+      "number": 28,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "天空视野率",
+        "en": "Sky View Factor"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B27*D27*G27",
+      "dataStatus": 1,
+      "sourceShape": "URBAN_MORPHOLOGY_RASTER",
+      "inputBoundary": "PHYSICAL",
+      "outputBoundary": "PHYSICAL",
+      "outputDataset": "PHY",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "NONE",
+      "formula": "Σ(SVF_i×BuiltArea_i)/Σ(BuiltArea_i)",
+      "physicalMethod": "在 city_100km_ultimate 最终物理城市边界内计算。",
+      "administrativeMethod": "不计算；除非后续版本将源数据升级为双边界。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "仅统计物理城市建成空间。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-029",
+      "number": 29,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "海拔高度（Mean elevation (meter)）",
+        "en": "海拔高度（Mean elevation (meter)）"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B28*D28*G28",
+      "dataStatus": 1,
+      "sourceShape": "DEM_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Elevation_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确是否排除水体。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-030",
+      "number": 30,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "土壤肥力",
+        "en": "Soil fertility"
+      },
+      "indicatorWeight": 0.08,
+      "finalWeightFormula": "=B29*D29*G29",
+      "dataStatus": 0,
+      "sourceShape": "SOIL_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(SoilFertility_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "数据源尚待确定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-031",
+      "number": 31,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "自然条件",
+        "en": "Natural Conditions"
+      },
+      "secondaryWeight": 0.15,
+      "name": {
+        "zh": "曲率",
+        "en": "Curvature"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B30*D30*G30",
+      "dataStatus": 0,
+      "sourceShape": "DEM_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Curvature_i×Area_i)/Σ(Area_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一曲率定义与尺度。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-032",
+      "number": 32,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "15分钟生活圈",
+        "en": "Commuting Time"
+      },
+      "indicatorWeight": 0.2,
+      "finalWeightFormula": "=B31*D31*G31",
+      "dataStatus": 1,
+      "sourceShape": "NETWORK_AND_POP_GRID",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_RATE",
+      "adminAllocationWeight": "POPULATION_ORIGIN",
+      "formula": "Σ(Pop_i×I(15min_access_i=1))/Σ(Pop_i)×100%",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "交通方式、设施集合和15分钟阈值需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-033",
+      "number": 33,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "公园数量",
+        "en": "The number of urban parks"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B32*D32*G32",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT_POLYGON",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(Park_ID whose representative point lies within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "跨边界公园只计一次。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-034",
+      "number": 34,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "公园植被丰富度",
+        "en": "The richness of parks vegetation"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B33*D33*G33",
+      "dataStatus": 1,
+      "sourceShape": "PARK_POLYGON_AND_VEGETATION",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "PARK_AREA_WEIGHTED_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "Σ(Richness_j×ParkArea_j)/Σ(ParkArea_j)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确物种丰富度或地表类型丰富度定义。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-035",
+      "number": 35,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "教育设施数量",
+        "en": "Number of educational facilities"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B34*D34*G34",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(EducationFacility_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "按统一设施等级和去重规则统计。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-036",
+      "number": 36,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "医疗设施数量",
+        "en": "Number of medical facilities"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B35*D35*G35",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(MedicalFacility_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "医疗机构等级需保留。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-037",
+      "number": 37,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "基础设施",
+        "en": "Infrastructure"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "体育设施数量",
+        "en": "Number of sports facilities"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B36*D36*G36",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(SportsFacility_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "大型场馆与社区设施分类需一致。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-038",
+      "number": 38,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "娱乐设施数量",
+        "en": "Recreation &amp; cultural sites"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B37*D37*G37",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(RecreationSite_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "固定POI分类体系。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-039",
+      "number": 39,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "文化设施数量",
+        "en": "Number of Cultural Events"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B38*D38*G38",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT_OR_EVENT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(CulturalFacility_or_Event_ID within boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "当前中英文名称不一致：设施数量或活动数量需确认。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-040",
+      "number": 40,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "旅游人口",
+        "en": "Tourist number"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B39*D39*G39",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_TOURISM_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIRECT_OR_SUM",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(AnnualTouristArrivals_admin×分配权重)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一游客人次、过夜游客或独立游客口径。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-041",
+      "number": 41,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "外国人口数量",
+        "en": "Foreign-born population"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B40*D40*G40",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_DEMOGRAPHIC_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "SUM",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(ForeignBornPopulation_admin×人口权重)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "需区分外国出生与外国国籍。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-042",
+      "number": 42,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "世界遗迹数量",
+        "en": "Proximity to World Heritage Sites"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B41*D41*G41",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_POINT_POLYGON",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(WorldHeritageSite_ID intersecting boundary)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "跨界遗产地只计一次，并可另存距离。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-043",
+      "number": 43,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "文化丰富",
+        "en": "Cultural Richness"
+      },
+      "secondaryWeight": 0.25,
+      "name": {
+        "zh": "文娱活动事件",
+        "en": "Cultural and recreational events"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B42*D42*G42",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_EVENT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "POINT_IN_POLYGON",
+      "formula": "CountDistinct(CulturalEvent_ID within boundary and year)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一事件时间窗。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-044",
+      "number": 44,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "人口平均寿命",
+        "en": "Life expectancy"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B43*D43*G43",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_HEALTH_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(LifeExpectancy_admin×Population_admin)/Σ(Population_admin)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "优先使用城市直接统计值。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-045",
+      "number": 45,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "人均收入",
+        "en": "Income per person"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B44*D44*G44",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_INCOME_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(IncomePerCapita_admin×Population_admin)/Σ(Population_admin)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一币价、PPP和年份。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-046",
+      "number": 46,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "房价",
+        "en": "Housing expenditure"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B45*D45*G45",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_HOUSING_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "MEDIAN_OR_POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "优先合并微观样本重算中位数；否则人口加权均值",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "明确房价、房租或住房支出占比。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-047",
+      "number": 47,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "最低工资标准",
+        "en": "Wage Level"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B46*D46*G46",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_POLICY_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIRECT_OR_POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "城市直接值；多行政单元时按就业人口加权",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一时薪、月薪或最低工资指数。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-048",
+      "number": 48,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "居民消费水平",
+        "en": "Residence Tax Rate"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B47*D47*G47",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_CONSUMPTION_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIRECT_OR_POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "城市直接值；多行政单元时按人口加权",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "中英文含义不一致，需确认消费水平或税率。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-049",
+      "number": 49,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "每周工作时长",
+        "en": "Total Working Hours per Capita"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B48*D48*G48",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_LABOR_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "EMPLOYMENT_WEIGHTED_MEAN",
+      "adminAllocationWeight": "EMPLOYMENT",
+      "formula": "Σ(WorkingHours_admin×Employment_admin)/Σ(Employment_admin)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一全职/全部就业人口。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-050",
+      "number": 50,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "居民可支配收入",
+        "en": "Disposable income"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B49*D49*G49",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_INCOME_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION",
+      "formula": "Σ(DisposableIncomePC_admin×Population_admin)/Σ(Population_admin)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一币价和PPP。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-051",
+      "number": 51,
+      "primary": {
+        "zh": "生活品质",
+        "en": "Quality of Life"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "生活品质/民生",
+        "en": "Quality of Life"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "恩格尔系数",
+        "en": "Engel coefficient"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B50*D50*G50",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_HOUSEHOLD_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "HOUSEHOLD_EXPENDITURE",
+      "formula": "Σ(FoodExpenditure)/Σ(TotalConsumptionExpenditure)×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "不能直接平均行政区恩格尔系数。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-058",
+      "number": 58,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "绿地面积与绿度",
+        "en": "Greenspace area and NDVI greenness"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B51*D51*G51",
+      "dataStatus": 1,
+      "sourceShape": "LAND_COVER_AND_NDVI_RASTERS",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM_WITH_PARALLEL_MEAN",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "正式输出：Σ(PixelArea | WorldCover class∈{10,20,30})/10^6、GreenShare、面积加权Mean NDVI及变化量",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "面积、覆盖率、NDVI与变化量全部作为正式指标入库。农田不计入绿地；永久水体从NDVI均值中排除。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-059",
+      "number": 59,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "绿度空间暴露",
+        "en": "Population-weighted NDVI exposure"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B52*D52*G52",
+      "dataStatus": 1,
+      "sourceShape": "NDVI_RASTER_AND_POP_GRID",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "Σ(NDVI_i×Population_i)/Σ(Population_i)；NDVI与人口采用同一年",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "正式入库值为POP_WEIGHTED_NDVI_2020；使用MOD13Q1 v061与GHSL 2020人口。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-060",
+      "number": 60,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "树木覆盖面积与比例",
+        "en": "Tree-covered area and share"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B53*D53*G53",
+      "dataStatus": 1,
+      "sourceShape": "LAND_COVER_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM_WITH_PARALLEL_SHARE",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "正式输出：Σ(PixelArea | WorldCover class=10)/10^6；TreeArea/LandArea×100%",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "ESA WorldCover v200（2021）；面积与覆盖率均为正式指标。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-061",
+      "number": 61,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "灌木覆盖面积与比例",
+        "en": "Shrubland area and share"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B54*D54*G54",
+      "dataStatus": 1,
+      "sourceShape": "LAND_COVER_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM_WITH_PARALLEL_SHARE",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "正式输出：Σ(PixelArea | WorldCover class=20)/10^6；ShrubArea/LandArea×100%",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "ESA WorldCover v200（2021）；面积与覆盖率均为正式指标。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-062",
+      "number": 62,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "草地覆盖面积与比例",
+        "en": "Grassland area and share"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B55*D55*G55",
+      "dataStatus": 1,
+      "sourceShape": "LAND_COVER_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM_WITH_PARALLEL_SHARE",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "正式输出：Σ(PixelArea | WorldCover class=30)/10^6；GrassArea/LandArea×100%",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "ESA WorldCover v200（2021）；面积与覆盖率均为正式指标。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-063",
+      "number": 63,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "蓝空间面积与比例",
+        "en": "Permanent water area and share"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B56*D56*G56",
+      "dataStatus": 1,
+      "sourceShape": "WATER_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "SUM_WITH_PARALLEL_SHARE",
+      "adminAllocationWeight": "DIRECT_CLIP",
+      "formula": "正式输出：Σ(PixelArea | JRC waterClass=3)/10^6；PermanentWaterArea/BoundaryArea×100%",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2.3已锁定",
+      "openIssue": "JRC Global Surface Water v1.4（2021）；永久水体面积与比例均为正式指标。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-064",
+      "number": 64,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "蓝-绿空间",
+        "en": "Green-Blue Space"
+      },
+      "secondaryWeight": 0.4,
+      "name": {
+        "zh": "蓝度空间暴露",
+        "en": "Bluespace exposure"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B57*D57*G57",
+      "dataStatus": 1,
+      "sourceShape": "WATER_RASTER_AND_POP_GRID",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "Σ(BlueExposure_i×Population_i)/Σ(Population_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "需定义可视距离或缓冲距离。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-065",
+      "number": 65,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "极端天气暴露",
+        "en": "Extreme Weather Exposure"
+      },
+      "secondaryWeight": 0.6,
+      "name": {
+        "zh": "空气质量",
+        "en": "PM2.5"
+      },
+      "indicatorWeight": 0.28,
+      "finalWeightFormula": "=B58*D58*G58",
+      "dataStatus": 1,
+      "sourceShape": "AIR_QUALITY_RASTER_AND_POP_GRID",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "Σ(PM2.5_i×Population_i)/Σ(Population_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "同时可保留面积加权均值作为附加字段。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-066",
+      "number": 66,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "极端天气暴露",
+        "en": "Extreme Weather Exposure"
+      },
+      "secondaryWeight": 0.6,
+      "name": {
+        "zh": "极端温度天数（高温和低温）",
+        "en": "Temperature anomalies"
+      },
+      "indicatorWeight": 0.24,
+      "finalWeightFormula": "=B59*D59*G59",
+      "dataStatus": 1,
+      "sourceShape": "CLIMATE_EXTREME_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "Σ(ExtremeTempDays_i×Population_i)/Σ(Population_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "高温与低温阈值需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-067",
+      "number": 67,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "极端天气暴露",
+        "en": "Extreme Weather Exposure"
+      },
+      "secondaryWeight": 0.6,
+      "name": {
+        "zh": "极端降水天数",
+        "en": "Rainfall anomalies"
+      },
+      "indicatorWeight": 0.24,
+      "finalWeightFormula": "=B60*D60*G60",
+      "dataStatus": 1,
+      "sourceShape": "CLIMATE_EXTREME_RASTER",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "Σ(ExtremeRainDays_i×Population_i)/Σ(Population_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "极端降水阈值需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-068",
+      "number": 68,
+      "primary": {
+        "zh": "环境友好",
+        "en": "Environmental Friendliness"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "极端天气暴露",
+        "en": "Extreme Weather Exposure"
+      },
+      "secondaryWeight": 0.6,
+      "name": {
+        "zh": "自然灾害次数",
+        "en": "Natural disasters"
+      },
+      "indicatorWeight": 0.24,
+      "finalWeightFormula": "=B61*D61*G61",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_DISASTER_EVENT",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT_OR_EXPOSURE",
+      "adminAllocationWeight": "EVENT_INTERSECTION",
+      "formula": "CountDistinct(Event_ID intersecting boundary)；可另算受影响人口",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "同一灾害跨边界不得重复到同一城市两次。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-069",
+      "number": 69,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "气候行动承诺",
+        "en": "Commitment to Climate Action"
+      },
+      "indicatorWeight": 0.12,
+      "finalWeightFormula": "=B62*D62*G62",
+      "dataStatus": 0,
+      "sourceShape": "CITY_POLICY_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "SCORING_RULE",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "按统一证据等级转换为0–100分",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "需要形成可审计的政策评分量表。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-070",
+      "number": 70,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "可再生能源",
+        "en": "Renewable Energy Rate"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B63*D63*G63",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ENERGY_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "RenewableEnergy/TotalEnergy×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "明确电力或全部终端能源。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-071",
+      "number": 71,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "废水回收能力",
+        "en": "Waste Recycle Rate"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B64*D64*G64",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_WATER_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "ReusedWastewater/TreatedWastewater×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "中英文名称需明确为废水回用率。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-072",
+      "number": 72,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "碳排放强度",
+        "en": "CO2 Emissions per Capita"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B65*D65*G65",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_EMISSION_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "TotalCO2e_admin/ResidentPopulation_admin",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "排放清单与人口必须同一行政口径。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-073",
+      "number": 73,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "环保上的投入",
+        "en": "Environmental protection investment"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B66*D66*G66",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_FISCAL_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "SUM_OR_RATIO",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "Σ(EnvironmentalProtectionInvestment)；可另算/GDP",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "明确绝对投入或投入占比。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-074",
+      "number": 74,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "环境保护相关的企业数量",
+        "en": "Number of environmental protection enterprises"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B67*D67*G67",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ENTERPRISE_REGISTRY",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(EnvironmentalEnterprise_ID assigned to city)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "统一环保企业行业代码。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-075",
+      "number": 75,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "拥有环境保护组织的数量/或加入",
+        "en": "Number of environmental protection organizations"
+      },
+      "indicatorWeight": 0.08,
+      "finalWeightFormula": "=B68*D68*G68",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ORGANIZATION_REGISTRY",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(EnvironmentalOrganization_ID assigned to city)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "明确本地组织或城市加入组织。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-076",
+      "number": 76,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "环境保护者的数量",
+        "en": "Number of environmentalists"
+      },
+      "indicatorWeight": 0.04,
+      "finalWeightFormula": "=B69*D69*G69",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_MEMBERSHIP_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "SUM",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "Σ(RegisteredEnvironmentalists)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "指标定义和全球数据可得性待确认。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-077",
+      "number": 77,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "环境可持续",
+        "en": "Environmental Sustainability"
+      },
+      "secondaryWeight": 0.55,
+      "name": {
+        "zh": "环境保护采取的行动次数",
+        "en": "Number of environmental protection actions"
+      },
+      "indicatorWeight": 0.04,
+      "finalWeightFormula": "=B70*D70*G70",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ACTION_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(EnvironmentalAction_ID within reporting year)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "活动定义和时间窗需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-078",
+      "number": 78,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "研发经费支出占比",
+        "en": "R&D expenditure ratio"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B71*D71*G71",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_RD_AND_GDP_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "R&D_Expenditure/GDP×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "研发支出和GDP需同年同口径。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-079",
+      "number": 79,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "专利申请数量",
+        "en": "Number of patent applications"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B72*D72*G72",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_PATENT_REGISTRY",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(PatentApplication_ID assigned by applicant address)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "申请地、申请人地址或发明人地址需统一。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-080",
+      "number": 80,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "初创企业数量",
+        "en": "Number of Startups"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B73*D73*G73",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ENTERPRISE_REGISTRY",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(Startup_ID assigned to city)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "初创企业年龄阈值需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-081",
+      "number": 81,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "经济多样性",
+        "en": "Economic diversity"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B74*D74*G74",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_INDUSTRY_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIVERSITY_INDEX",
+      "adminAllocationWeight": "EMPLOYMENT_OR_VALUE_ADDED",
+      "formula": "−Σ(s_k×ln(s_k))，s_k为行业就业或增加值份额",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "就业或增加值口径二选一。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-082",
+      "number": 82,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "经济稳定性",
+        "en": "Economic stability"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B75*D75*G75",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ECONOMIC_TIME_SERIES",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "VOLATILITY_INDEX",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "1−Normalize(SD(GDP_growth_t))，或预先确定稳定性公式",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "时间窗和标准化方向需固定。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-083",
+      "number": 83,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "企业注册平均时常",
+        "en": "Average time for enterprise registration"
+      },
+      "indicatorWeight": 0.08,
+      "finalWeightFormula": "=B76*D76*G76",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_BUSINESS_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "MEAN_OR_MEDIAN",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "Median(Days_to_register_enterprise)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "优先中位数。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-084",
+      "number": 84,
+      "primary": {
+        "zh": "可持续性",
+        "en": "Sustainability"
+      },
+      "primaryWeight": 0.2,
+      "secondary": {
+        "zh": "经济可持续",
+        "en": "Economic Sustainability"
+      },
+      "secondaryWeight": 0.45,
+      "name": {
+        "zh": "20年企业数量",
+        "en": "Number of enterprises with 20+ years of operation"
+      },
+      "indicatorWeight": 0.1,
+      "finalWeightFormula": "=B77*D77*G77",
+      "dataStatus": 0,
+      "sourceShape": "ADMIN_ENTERPRISE_REGISTRY",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(Enterprise_ID with operating_years≥20)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "建议口径／待数据源确认",
+      "openIssue": "可另算占全部企业比例。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-085",
+      "number": 85,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "机场数量",
+        "en": "Number of Arrivals and Departures at Airports"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B78*D78*G78",
+      "dataStatus": 1,
+      "sourceShape": "GEOCODED_AIRPORT_AND_OPERATION",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "DEDUP_COUNT_OR_SUM",
+      "adminAllocationWeight": "POINT_OR_SERVICE_ASSIGNMENT",
+      "formula": "机场数量=CountDistinct(Airport_ID)；起降量=Σ(Arrivals+Departures)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "当前中英文名称不一致，需确定最终指标。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-086",
+      "number": 86,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "航线数量",
+        "en": "International Freight Flows"
+      },
+      "indicatorWeight": 0.18,
+      "finalWeightFormula": "=B79*D79*G79",
+      "dataStatus": 1,
+      "sourceShape": "AIRPORT_OPERATION_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "SERVICE_AIRPORT_ASSIGNMENT",
+      "formula": "CountDistinct(ActiveRoute_ID by assigned service airports)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "不按机场点是否落入GUB裁剪。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-087",
+      "number": 87,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "飞机乘客数量",
+        "en": "Number of Air Passengers"
+      },
+      "indicatorWeight": 0.16,
+      "finalWeightFormula": "=B80*D80*G80",
+      "dataStatus": 1,
+      "sourceShape": "AIRPORT_OPERATION_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "SUM",
+      "adminAllocationWeight": "SERVICE_AIRPORT_ASSIGNMENT",
+      "formula": "Σ(AnnualPassengers of assigned service airports)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "多城市共享机场需制定归属或分配规则。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-088",
+      "number": 88,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "机场可达性",
+        "en": "Travel Time to Airports"
+      },
+      "indicatorWeight": 0.14,
+      "finalWeightFormula": "=B81*D81*G81",
+      "dataStatus": 1,
+      "sourceShape": "NETWORK_AND_POP_GRID",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEAN",
+      "adminAllocationWeight": "POPULATION_ORIGIN",
+      "formula": "Σ(TravelTime_i_to_assigned_airport×Population_i)/Σ(Population_i)",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "物理与行政边界分别选择起点人口。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-089",
+      "number": 89,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "加入国家合作组织数量",
+        "en": "Number of joined international cooperation organizations"
+      },
+      "indicatorWeight": 0.17,
+      "finalWeightFormula": "=B82*D82*G82",
+      "dataStatus": 1,
+      "sourceShape": "CITY_MEMBERSHIP_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(InternationalOrganizationMembership_ID)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "明确城市政府或城市机构会员资格。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-090",
+      "number": 90,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "国际/区域合作",
+        "en": "International/Regional Cooperation"
+      },
+      "secondaryWeight": 0.7,
+      "name": {
+        "zh": "国际或区域合作组织总部",
+        "en": "Headquarters of international/regional cooperation organizations"
+      },
+      "indicatorWeight": 0.19,
+      "finalWeightFormula": "=B83*D83*G83",
+      "dataStatus": 1,
+      "sourceShape": "CITY_ORGANIZATION_RECORD",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DEDUP_COUNT",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "CountDistinct(InternationalOrganization_HQ_ID assigned to city)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "总部归属以官方地址为准。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-091",
+      "number": 91,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "网络活跃",
+        "en": "Network Activity"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "上网速度",
+        "en": "Internet speed"
+      },
+      "indicatorWeight": 0.4,
+      "finalWeightFormula": "=B84*D84*G84",
+      "dataStatus": 1,
+      "sourceShape": "GEOLOCATED_SPEED_TEST",
+      "inputBoundary": "DUAL",
+      "outputBoundary": "DUAL",
+      "outputDataset": "PHY + ADM",
+      "operator": "POP_WEIGHTED_MEDIAN",
+      "adminAllocationWeight": "POPULATION_GRID",
+      "formula": "按边界内测速点计算人口加权中位下载速度",
+      "physicalMethod": "在 city_100km_ultimate 物理边界内独立计算。",
+      "administrativeMethod": "在对应行政片段/行政统计口径内独立计算。",
+      "dualBoundaryRule": "同一源数据、同一年度、同一算法分别运行两次，输出 *_PHY 与 *_ADM；两值不相加、不平均。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "测速样本偏差与移动/固定网络需分开。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-092",
+      "number": 92,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "网络活跃",
+        "en": "Network Activity"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "智能手机拥有量",
+        "en": "Smartphone ownership"
+      },
+      "indicatorWeight": 0.3,
+      "finalWeightFormula": "=B85*D85*G85",
+      "dataStatus": 1,
+      "sourceShape": "ADMIN_SURVEY_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "RATIO_RECALC",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "SmartphoneOwners/Population_age_threshold×100%",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "统一调查年龄范围。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    },
+    {
+      "id": "GCI-IND-093",
+      "number": 93,
+      "primary": {
+        "zh": "互联性",
+        "en": "Connectivity"
+      },
+      "primaryWeight": 0.15,
+      "secondary": {
+        "zh": "网络活跃",
+        "en": "Network Activity"
+      },
+      "secondaryWeight": 0.3,
+      "name": {
+        "zh": "网站访问量",
+        "en": "Website traffic"
+      },
+      "indicatorWeight": 0.3,
+      "finalWeightFormula": "=B86*D86*G86",
+      "dataStatus": 1,
+      "sourceShape": "CITY_DIGITAL_STAT",
+      "inputBoundary": "ADMIN",
+      "outputBoundary": "ADMIN",
+      "outputDataset": "ADM",
+      "operator": "DIRECT_OR_SUM",
+      "adminAllocationWeight": "DIRECT_CITY_RECORD",
+      "formula": "Σ(WebsiteVisits assigned to city and period)",
+      "physicalMethod": "不计算；不得用面积比例伪造物理边界统计值。",
+      "administrativeMethod": "按 assigned_admin_fragments 及指标适用权重聚合，率值先汇总分子分母后重算。",
+      "dualBoundaryRule": "不适用。",
+      "definitionStatus": "V2已定义",
+      "openIssue": "需明确统计网站集合、机器人流量与时间窗。",
+      "indicatorVersion": "GCI-IND-v2.3-GEE-B05",
+      "sourceBoundaryVersion": "GC100-20260827-V1.0.1"
+    }
+  ],
+  "dictionary": [
+    {
+      "类别": "边界",
+      "代码": "PHYSICAL",
+      "定义": "源数据仅按最终物理城市边界统计",
+      "计算规则": "在 city_100km_ultimate 内计算",
+      "输出": "*_PHY"
+    },
+    {
+      "类别": "边界",
+      "代码": "ADMIN",
+      "定义": "源数据按城市对应行政片段或城市行政统计统计",
+      "计算规则": "按指标适用权重聚合",
+      "输出": "*_ADM"
+    },
+    {
+      "类别": "边界",
+      "代码": "DUAL",
+      "定义": "同一指标可在两套边界上科学计算",
+      "计算规则": "完全相同算法分别运行两次",
+      "输出": "*_PHY + *_ADM"
+    },
+    {
+      "类别": "算子",
+      "代码": "SUM",
+      "定义": "总量求和",
+      "计算规则": "求和前处理重复与缺失",
+      "输出": "总量"
+    },
+    {
+      "类别": "算子",
+      "代码": "DEDUP_COUNT",
+      "定义": "唯一对象计数",
+      "计算规则": "按稳定对象ID去重",
+      "输出": "数量"
+    },
+    {
+      "类别": "算子",
+      "代码": "AREA_WEIGHTED_MEAN",
+      "定义": "面积加权均值",
+      "计算规则": "Σ(Value×Area)/Σ(Area)",
+      "输出": "均值"
+    },
+    {
+      "类别": "算子",
+      "代码": "POP_WEIGHTED_MEAN",
+      "定义": "人口加权均值",
+      "计算规则": "Σ(Value×Population)/Σ(Population)",
+      "输出": "暴露均值"
+    },
+    {
+      "类别": "算子",
+      "代码": "RATIO_RECALC",
+      "定义": "重新计算比例",
+      "计算规则": "Σ(Numerator)/Σ(Denominator)",
+      "输出": "比例"
+    },
+    {
+      "类别": "算子",
+      "代码": "GROWTH_RECALC",
+      "定义": "重新计算增长率",
+      "计算规则": "(V_t1−V_t0)/V_t0",
+      "输出": "增长率"
+    },
+    {
+      "类别": "权重",
+      "代码": "POPULATION",
+      "定义": "人口与民生类行政分配",
+      "计算规则": "按对应人口或人口栅格权重",
+      "输出": "—"
+    },
+    {
+      "类别": "权重",
+      "代码": "NTL_EMPLOYMENT",
+      "定义": "经济活动类行政分配",
+      "计算规则": "按夜光、就业或经济网格权重",
+      "输出": "—"
+    },
+    {
+      "类别": "权重",
+      "代码": "DIRECT_CLIP",
+      "定义": "空间连续数据",
+      "计算规则": "直接按目标几何裁剪",
+      "输出": "—"
+    },
+    {
+      "类别": "算子",
+      "代码": "SUM_WITH_PARALLEL_SHARE",
+      "定义": "面积总量与覆盖率均正式保存",
+      "计算规则": "先求面积总量，再用统一分母重算比例",
+      "输出": "面积 + 覆盖率"
+    },
+    {
+      "类别": "算子",
+      "代码": "SUM_WITH_PARALLEL_MEAN",
+      "定义": "面积总量与强度均值均正式保存",
+      "计算规则": "面积求和；NDVI按有效像元面积加权均值",
+      "输出": "面积 + 强度均值"
+    }
+  ],
+  "methodology": {
+    "version": "GCI-METHOD-BGNDVI-v1.1",
+    "title": {
+      "zh": "蓝绿空间与 NDVI 指标方法说明",
+      "en": "Blue-Green Space and NDVI Indicator Methodology"
+    },
+    "principles": {
+      "zh": [
+        "面积、覆盖率、平均 NDVI 与人口加权 NDVI 回答不同问题，不可互相替代。",
+        "可获得、口径明确且通过质量控制的原始统计均正式入库，综合指数筛选与权重另行版本化。",
+        "物理值与行政值使用同源、同年、同算法分别计算，独立保存。",
+        "缺失不等于零；无数据、不适用与真实零值必须区分。"
+      ],
+      "en": [
+        "Area, coverage, mean NDVI and population-weighted NDVI answer distinct questions and are not interchangeable.",
+        "Available, well-defined and quality-controlled statistics enter the indicator database; composite-index selection and weights are versioned separately.",
+        "Physical and administrative results use the same source, year and algorithm and remain separate outputs.",
+        "Missing is not zero; no data, not applicable and observed zero must be distinguished."
+      ]
+    },
+    "formulas": [
+      "陆地面积（LAND_AREA_KM2_2021）= 城市边界面积 − 永久水体面积。绿地、树木、灌木与草地覆盖率的统一分母为陆地面积；永久水体覆盖率的分母为城市边界总面积。面积与百分比均作为正式指标入库，分别描述绝对规模和相对规模。",
+      "MEAN_NDVI_y = Σ(NDVIᵢ,y × Aᵢ) / ΣAᵢ",
+      "NDVI_CHANGE_2020_2025 = MEAN_NDVI_2025 − MEAN_NDVI_2020",
+      "POP_WEIGHTED_NDVI_2020 = Σ(NDVIᵢ,2020 × POPᵢ,2020) / ΣPOPᵢ,2020"
+    ],
+    "sources": [
+      "MODIS 250 m 尺度可能平滑小型城市和狭窄绿地；跨气候区比较仍受物候和云污染影响。",
+      "ESA WorldCover v200: https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v200",
+      "JRC Global Surface Water v1.4 — Yearly History: https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_YearlyHistory",
+      "MODIS/061/MOD13Q1: https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13Q1",
+      "GHSL Population P2023A: https://developers.google.com/earth-engine/datasets/catalog/JRC_GHSL_P2023A_GHS_POP"
+    ],
+    "sourceFile": "Global_City_Index_BlueGreen_NDVI_Methodology_v1_1_AllAvailableMetrics.docx"
+  }
+}

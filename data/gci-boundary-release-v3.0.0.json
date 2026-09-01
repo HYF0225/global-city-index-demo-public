@@ -1,0 +1,81 @@
+{
+  "releaseId": "GCI-DB-20260901-V3.0.0-FINAL",
+  "releaseStatus": "LOCKED_FINAL",
+  "canonicalSource": "Global_City_Dual_Boundary_v3_0_0_FINAL.gpkg",
+  "canonicalSha256": "ef28b63020a20f6a1c4be0838d2965c18d8bcd06bd247e8069dfd4e41d47ace6",
+  "cityCount": 2315,
+  "fragmentCount": 13659,
+  "fourLayerCityIdSetsIdentical": true,
+  "physicalCityCount": 2315,
+  "administrativeCityCount": 2315,
+  "simplificationApplied": false,
+  "coordinateRoundingApplied": false,
+  "geometryTransformApplied": false,
+  "geometryClippingApplied": false,
+  "pointsSha256": "9d2e731344325a40f8536305c1bc7fc277f34154b1ff3dc508753b57cd3dcca0",
+  "manifestSha256": "8f0e7b50e3a09d14bca3c47e06108378eca584cca13f39e2ebc641e80eed2ecb",
+  "previousRegistryComparison": {
+    "previousCount": 2308,
+    "sharedCount": 2296,
+    "addedInV3Count": 19,
+    "removedFromV3Count": 12,
+    "addedInV3": [
+      "UGC100_020B9E55F4E13D",
+      "UGC100_0B55608EAA42E1",
+      "UGC100_2B26DD52438946",
+      "UGC100_4A461643742971",
+      "UGC100_4F3E510CFAA493",
+      "UGC100_620ABAD9D4B5D0",
+      "UGC100_6A9DA9799837CC",
+      "UGC100_6B986FE5961678",
+      "UGC100_80924AE2EB40B9",
+      "UGC100_811F4A3881D451",
+      "UGC100_8A2E50897A3D4A",
+      "UGC100_97423077EFC67F",
+      "UGC100_A3281F192A32E9",
+      "UGC100_A622ABCFB94002",
+      "UGC100_BC87AD002B9485",
+      "UGC100_C256E309105DC0",
+      "UGC100_C55BE083C923D3",
+      "UGC100_CBA7937395BFA8",
+      "UGC100_EF11D469EDEF26"
+    ],
+    "removedFromV3": [
+      "UGC100_006084B4235E6C",
+      "UGC100_04B6075D53BB5A",
+      "UGC100_0C401DF3C40E07",
+      "UGC100_36AE8CB9D2C76E",
+      "UGC100_3CACB4EECCCF19",
+      "UGC100_739374D5920FE7",
+      "UGC100_7A0B08D3DE2068",
+      "UGC100_9C53A18D6A3575",
+      "UGC100_CB9AB60B4449D6",
+      "UGC100_CE55D1B8BC176E",
+      "UGC100_E5CD307ED66DDB",
+      "UGC100_E7280F16D59898"
+    ]
+  },
+  "existingMetricReleaseComparison": {
+    "metricRecordCount": 2308,
+    "sharedCount": 2296,
+    "v3WithoutExistingMetricCount": 19,
+    "existingMetricIdsOutsideV3Count": 12,
+    "note": "Existing metric values retain their original release and boundary basis; this export does not recalculate metrics."
+  },
+  "layers": {
+    "physical": {
+      "sourceLayer": "city_physical_final",
+      "featureCount": 2315,
+      "coordinateCount": 17507164,
+      "tileCount": 403,
+      "gzipBytes": 106354694
+    },
+    "administrative": {
+      "sourceLayer": "city_admin_final",
+      "featureCount": 2315,
+      "coordinateCount": 6291532,
+      "tileCount": 403,
+      "gzipBytes": 68048423
+    }
+  }
+}
